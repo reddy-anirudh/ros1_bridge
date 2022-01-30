@@ -215,6 +215,11 @@ void update_bridge(
   for (auto ros2_publisher : ros2_publishers) {
     // identify topics available as ROS 1 subscribers as well as ROS 2 publishers
     auto topic_name = ros2_publisher.first;
+    std::string honda_interface = "honda_interface";
+    std::size_t found = topic_name.find(honda_interface);
+    if(found == std::string::npos){
+      continue;
+    }
     std::string ros2_type_name = ros2_publisher.second;
     std::string ros1_type_name;
 
